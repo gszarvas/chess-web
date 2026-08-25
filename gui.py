@@ -274,18 +274,18 @@ class ChessGUI:
 
     def load_images(self):
         images = {
-        ("white", "king") : pygame.image.load("assets/wking.png").convert_alpha(),
-        ("white", "queen") : pygame.image.load("assets/wqueen.png").convert_alpha(),
-        ("white", "bishop") : pygame.image.load("assets/wbishop.png").convert_alpha(),
-        ("white", "rook") : pygame.image.load("assets/wrook.png").convert_alpha(),
-        ("white", "knight") : pygame.image.load("assets/wknight.png").convert_alpha(),
-        ("white", "pawn") : pygame.image.load("assets/wpawn.png").convert_alpha(),
-        ("black", "king") : pygame.image.load("assets/bking.png").convert_alpha(),
-        ("black", "queen") : pygame.image.load("assets/bqueen.png").convert_alpha(),
-        ("black", "bishop") : pygame.image.load("assets/bbishop.png").convert_alpha(),
-        ("black", "rook") : pygame.image.load("assets/brook.png").convert_alpha(),
-        ("black", "knight") : pygame.image.load("assets/bknight.png").convert_alpha(),
-        ("black", "pawn") : pygame.image.load("assets/bpawn.png").convert_alpha()
+        ("white", "king") : pygame.image.load("assets/wking.PNG").convert_alpha(),
+        ("white", "queen") : pygame.image.load("assets/wqueen.PNG").convert_alpha(),
+        ("white", "bishop") : pygame.image.load("assets/wbishop.PNG").convert_alpha(),
+        ("white", "rook") : pygame.image.load("assets/wrook.PNG").convert_alpha(),
+        ("white", "knight") : pygame.image.load("assets/wknight.PNG").convert_alpha(),
+        ("white", "pawn") : pygame.image.load("assets/wpawn.PNG").convert_alpha(),
+        ("black", "king") : pygame.image.load("assets/bking.PNG").convert_alpha(),
+        ("black", "queen") : pygame.image.load("assets/bqueen.PNG").convert_alpha(),
+        ("black", "bishop") : pygame.image.load("assets/bbishop.PNG").convert_alpha(),
+        ("black", "rook") : pygame.image.load("assets/brook.PNG").convert_alpha(),
+        ("black", "knight") : pygame.image.load("assets/bknight.PNG").convert_alpha(),
+        ("black", "pawn") : pygame.image.load("assets/bpawn.PNG").convert_alpha()
     }
         scale = self.SQUARE / 264   # approx. king image height
 
