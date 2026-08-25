@@ -1,0 +1,17 @@
+[files]
+"chess_rules.py" = "chess_rules.py"
+"ai.py" = "ai.py"
+
+"assets/wking.png" = "assets/wking.png"
+"assets/wqueen.png" = "assets/wqueen.png"
+"assets/wbishop.png" = "assets/wbishop.png"
+"assets/wrook.png" = "assets/wrook.png"
+"assets/wknight.png" = "assets/wknight.png"
+"assets/wpawn.png" = "assets/wpawn.png"
+
+"assets/bking.png" = "assets/bking.png"
+"assets/bqueen.png" = "assets/bqueen.png"
+"assets/bbishop.png" = "assets/bbishop.png"
+"assets/brook.png" = "assets/brook.png"
+"assets/bknight.png" = "assets/bknight.png"
+"assets/bpawn.png" = "assets/bpawn.png"
