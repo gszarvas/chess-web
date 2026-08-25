@@ -5,7 +5,7 @@ Playable chess game, including checks, checkmate, capturing, castling, en passan
 In two player, game begins automatically.
 In single player, user selects their color and opponent difficulty, and the game begins.
 In bot vs bot, user selects white bot difficulty and black bot difficulty, and the game begins. In an active bot vs bot game, no user input is required, only observation.
-Click on piece of your color to see its legal moves, and click any highlighted square to move the piece there. 
+Click on any piece of your color to see its legal moves, and click any highlighted square to move the piece there. 
 Click any other square to deselect the chosen piece, and select a piece again. 
 Game ends by checkmate, stalemate, draw by threefold repetition or 50 moves.
 
