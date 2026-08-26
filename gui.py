@@ -596,9 +596,9 @@ class ChessGUI:
 
 
 async def main():
-    print("GUI FILE STARTING")
+    # print("GUI FILE STARTING")
     gui = ChessGUI()
-    print("GUI CREATED")
+    # print("GUI CREATED")
     await gui.startup()
 
 main()
