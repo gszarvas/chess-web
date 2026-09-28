@@ -16,7 +16,7 @@ Latest updates:
 - Significantly reduced search time for the AI opponent
 - Optimized in_check, evaluate_board
 - Added basic transposition table, iterative deepening, and killer move search for more aggressive pruning and faster search time
-- Added playable difficulties (depth) 5 and 6 to the game
+- Added playable difficulties (depth) 0-5 to the game
 
 Current version: 0.9.4
 
