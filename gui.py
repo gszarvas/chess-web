@@ -210,8 +210,8 @@ class ChessGUI:
             ("2 - Beginner", 2),
             ("3 - Intermediate", 3),
             ("4 - Intermediate+", 4),
-            ("5 - Advanced", 5),
-            ("6 - Advanced+", 6)
+            ("5 - Advanced", 5)
+            # ("6 - Advanced+", 6)
         ]
 
         button_width = 320
@@ -608,9 +608,9 @@ class ChessGUI:
 
 
 async def main():
-    print("GUI FILE STARTING")
+    # print("GUI FILE STARTING")
     gui = ChessGUI()
-    print("GUI CREATED")
+    # print("GUI CREATED")
     await gui.startup()
 
 main()
