@@ -307,6 +307,18 @@ class ChessGUI:
                     color = self.DARK 
                 pygame.draw.rect(self.screen, color, (col*self.SQUARE, row*self.SQUARE, self.SQUARE, self.SQUARE))
 
+        if self.game.move_history:
+            move = self.game.move_history[-1]
+
+            highlight = pygame.Surface((self.SQUARE, self.SQUARE), pygame.SRCALPHA)
+            highlight.fill((255, 255, 0, 80))  # yellow, semi-transparent
+
+            for row, col in (move.start, move.end):
+                self.screen.blit(
+                    highlight,
+                    (col * self.SQUARE, row * self.SQUARE)
+                )
+
         for move in self.highlighted_squares: # draw highlighted squares
             row, col = move.end
             if self.game.game_board.board[row][col] is None:
