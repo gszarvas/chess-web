@@ -3,8 +3,9 @@ import cProfile
 import pstats 
 import asyncio 
 
-from chess_rules import Pawn 
 from chess_rules import Board
+from chess_rules import Piece 
+from chess_rules import WHITE, BLACK 
 
 from chess_rules import Game
 from ai import Opponent
@@ -130,8 +131,8 @@ class ChessGUI:
             await self.run_single_player()
 
         elif self.mode == 2: # 2 bots thus bot vs bot
-            self.black_opponent = Opponent(color = 'black')
-            self.white_opponent = Opponent(color = 'white')
+            self.black_opponent = Opponent(color = BLACK)
+            self.white_opponent = Opponent(color = WHITE)
 
             diff = await self.difficulty_menu()
             self.white_opponent.set_difficulty(diff)
@@ -152,8 +153,8 @@ class ChessGUI:
         TITLE = (225, 225, 225)
 
         buttons = [
-            ("White", pygame.Rect(120, 320, 200, 70), "black"),
-            ("Black", pygame.Rect(400, 320, 200, 70), "white"),
+            ("White", pygame.Rect(120, 320, 200, 70), BLACK),
+            ("Black", pygame.Rect(400, 320, 200, 70), WHITE),
         ]
 
         while True:
@@ -274,18 +275,18 @@ class ChessGUI:
 
     def load_images(self):
         images = {
-        ("white", "king") : pygame.image.load("assets/wking.PNG").convert_alpha(),
-        ("white", "queen") : pygame.image.load("assets/wqueen.PNG").convert_alpha(),
-        ("white", "bishop") : pygame.image.load("assets/wbishop.PNG").convert_alpha(),
-        ("white", "rook") : pygame.image.load("assets/wrook.PNG").convert_alpha(),
-        ("white", "knight") : pygame.image.load("assets/wknight.PNG").convert_alpha(),
-        ("white", "pawn") : pygame.image.load("assets/wpawn.PNG").convert_alpha(),
-        ("black", "king") : pygame.image.load("assets/bking.PNG").convert_alpha(),
-        ("black", "queen") : pygame.image.load("assets/bqueen.PNG").convert_alpha(),
-        ("black", "bishop") : pygame.image.load("assets/bbishop.PNG").convert_alpha(),
-        ("black", "rook") : pygame.image.load("assets/brook.PNG").convert_alpha(),
-        ("black", "knight") : pygame.image.load("assets/bknight.PNG").convert_alpha(),
-        ("black", "pawn") : pygame.image.load("assets/bpawn.PNG").convert_alpha()
+        (WHITE, 5) : pygame.image.load("assets/wking.png").convert_alpha(),
+        (WHITE, 4) : pygame.image.load("assets/wqueen.png").convert_alpha(),
+        (WHITE, 2) : pygame.image.load("assets/wbishop.png").convert_alpha(),
+        (WHITE, 3) : pygame.image.load("assets/wrook.png").convert_alpha(),
+        (WHITE, 1) : pygame.image.load("assets/wknight.png").convert_alpha(),
+        (WHITE, 0) : pygame.image.load("assets/wpawn.png").convert_alpha(),
+        (BLACK, 5) : pygame.image.load("assets/bking.png").convert_alpha(),
+        (BLACK, 4) : pygame.image.load("assets/bqueen.png").convert_alpha(),
+        (BLACK, 2) : pygame.image.load("assets/bbishop.png").convert_alpha(),
+        (BLACK, 3) : pygame.image.load("assets/brook.png").convert_alpha(),
+        (BLACK, 1) : pygame.image.load("assets/bknight.png").convert_alpha(),
+        (BLACK, 0) : pygame.image.load("assets/bpawn.png").convert_alpha()
     }
         scale = self.SQUARE / 264   # approx. king image height
 
@@ -402,7 +403,7 @@ class ChessGUI:
                 3
             )
 
-            pieces = ["queen", "rook", "bishop", "knight"]
+            pieces = [4, 3, 2, 1]
 
             self.promotion_buttons.clear()
 
@@ -427,14 +428,14 @@ class ChessGUI:
             self.screen.blit(overlay, (0, 0))
     
     def finish_move(self, move):
-        if move.captured is None and move.piece.piece_type != 'pawn':
+        if move.captured is None and move.piece.piece_type != 0:
             self.game.fifty_moves += 1
         else:
             self.game.fifty_moves = 0
         if self.game.fifty_moves >= 50:
             self.game_message = "Draw by 50 move rule"
             self.game.game_over = True 
-            pygame.display.set_caption("Chess: " + self.game_message)
+            pygame.display.set_caption("Chess by gszarvas: " + self.game_message)
              
             return 
 
@@ -444,9 +445,9 @@ class ChessGUI:
         self.highlighted_squares = []
         self.game.switch_turn()
 
-        position = Position(self.game.game_board, self.game.turn)  # three fold repetition check
-        self.game.game_board.pos_history[position] = self.game.game_board.pos_history.get(position, 0) + 1
-        if self.game.game_board.pos_history[position] == 3:
+        position_hash = Position(self.game.game_board, self.game.turn).calculate_zobrist_hash()  # three fold repetition check
+        self.game.game_board.pos_history[position_hash] = self.game.game_board.pos_history.get(position_hash, 0) + 1
+        if self.game.game_board.pos_history[position_hash] == 3:
             self.game.game_over = True 
 
             self.game_message = "Draw by threefold repetition"
@@ -459,7 +460,7 @@ class ChessGUI:
             pygame.display.set_caption("Chess by gszarvas: " + self.game_message)
             return
         elif self.game.game_board.is_checkmate(self.game.turn):
-            winner = 'White' if self.game.turn == 'black' else 'Black'
+            winner = 'White' if self.game.turn == BLACK else 'Black'
             self.game_message = f"{winner} wins by checkmate!"
             self.game.game_over = True 
             pygame.display.set_caption("Chess by gszarvas: " + self.game_message)
