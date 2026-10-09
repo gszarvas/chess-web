@@ -275,18 +275,18 @@ class ChessGUI:
 
     def load_images(self):
         images = {
-        (WHITE, 5) : pygame.image.load("assets/wking.png").convert_alpha(),
-        (WHITE, 4) : pygame.image.load("assets/wqueen.png").convert_alpha(),
-        (WHITE, 2) : pygame.image.load("assets/wbishop.png").convert_alpha(),
-        (WHITE, 3) : pygame.image.load("assets/wrook.png").convert_alpha(),
-        (WHITE, 1) : pygame.image.load("assets/wknight.png").convert_alpha(),
-        (WHITE, 0) : pygame.image.load("assets/wpawn.png").convert_alpha(),
-        (BLACK, 5) : pygame.image.load("assets/bking.png").convert_alpha(),
-        (BLACK, 4) : pygame.image.load("assets/bqueen.png").convert_alpha(),
-        (BLACK, 2) : pygame.image.load("assets/bbishop.png").convert_alpha(),
-        (BLACK, 3) : pygame.image.load("assets/brook.png").convert_alpha(),
-        (BLACK, 1) : pygame.image.load("assets/bknight.png").convert_alpha(),
-        (BLACK, 0) : pygame.image.load("assets/bpawn.png").convert_alpha()
+        (WHITE, 5) : pygame.image.load("assets/wking.PNG").convert_alpha(),
+        (WHITE, 4) : pygame.image.load("assets/wqueen.PNG").convert_alpha(),
+        (WHITE, 2) : pygame.image.load("assets/wbishop.PNG").convert_alpha(),
+        (WHITE, 3) : pygame.image.load("assets/wrook.PNG").convert_alpha(),
+        (WHITE, 1) : pygame.image.load("assets/wknight.PNG").convert_alpha(),
+        (WHITE, 0) : pygame.image.load("assets/wpawn.PNG").convert_alpha(),
+        (BLACK, 5) : pygame.image.load("assets/bking.PNG").convert_alpha(),
+        (BLACK, 4) : pygame.image.load("assets/bqueen.PNG").convert_alpha(),
+        (BLACK, 2) : pygame.image.load("assets/bbishop.PNG").convert_alpha(),
+        (BLACK, 3) : pygame.image.load("assets/brook.PNG").convert_alpha(),
+        (BLACK, 1) : pygame.image.load("assets/bknight.PNG").convert_alpha(),
+        (BLACK, 0) : pygame.image.load("assets/bpawn.PNG").convert_alpha()
     }
         scale = self.SQUARE / 264   # approx. king image height
 
